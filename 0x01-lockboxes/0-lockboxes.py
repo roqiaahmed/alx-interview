@@ -1,9 +1,9 @@
 #!/usr/bin/python3
+"""Defines a function that determines if all the boxes can be opened."""
 
 
 def canUnlockAll(boxes):
     """Determines if all the boxes can be opened."""
-
     if len(boxes) == 0:
         return False
     keys = [0]
