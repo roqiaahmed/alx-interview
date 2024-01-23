@@ -2,6 +2,7 @@
 
 import sys
 import signal
+import re
 
 default_handler = None
 status_codes = {k: 0 for k in [200, 301, 400, 401, 403, 404, 405, 500]}
@@ -21,10 +22,20 @@ def print_stats(total_size, status_codes):
             print("{}: {}".format(key, value))
 
 
+# <IP Address> - [<date>] "GET /projects/260 HTTP/1.1" <status code> <file size>
+def check_format(input_string):
+    pattern = r'^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} - \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+\] "GET \/projects\/\d+ HTTP\/1\.1" \d+ \d+$'
+    match = re.match(pattern, input_string)
+    return match is not None
+
+
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, handler)
     for line in sys.stdin:
         try:
+            if not check_format(line):
+                continue
+            print(line)
             data = line.split()
             status_code = int(data[-2])
             file_size = int(data[-1])
