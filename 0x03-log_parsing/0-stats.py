@@ -35,7 +35,6 @@ if __name__ == "__main__":
         try:
             if not check_format(line):
                 continue
-            print(line)
             data = line.split()
             status_code = int(data[-2])
             file_size = int(data[-1])
