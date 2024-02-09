@@ -42,10 +42,14 @@ def nqueens(n: int) -> List[List[int]]:
 
 
 if __name__ == "__main__":
-    if not sys.argv[1].isnumeric():
-        print("N must be a number")
-    if int(sys.argv[1]) < 4:
-        print("N must be at least 4")
-    queens = nqueens(int(sys.argv[1]))
-    for i in queens:
-        print(i)
+    try:
+        ar_sys = sys.argv[1]
+        if not ar_sys.isnumeric():
+            print("N must be a number")
+        if int(sys.argv[1]) < 4:
+            print("N must be at least 4")
+        queens = nqueens(int(sys.argv[1]))
+        for i in queens:
+            print(i)
+    except:
+        print("Usage: nqueens N")
