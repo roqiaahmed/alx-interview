@@ -5,6 +5,7 @@ Test 0x07 - Rotate 2D Matrix
 
 
 def rotate_2d_matrix(matrix):
+    """rotate 2d matrix"""
     n = len(matrix)
 
     for r in range(n):
