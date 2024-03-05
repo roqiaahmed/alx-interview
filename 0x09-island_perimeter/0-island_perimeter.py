@@ -17,7 +17,6 @@ def island_perimeter(grid):
         for col in range(cols):
             if grid[row][col] == 1:
                 hash.append((row, col))
-                print(f"out side =====>  {row} {col}")
                 break
         if len(hash) != 0:
             break
@@ -32,8 +31,5 @@ def island_perimeter(grid):
             if grid[new_row][new_col] == 1:
                 hash.append((new_row, new_col))
             if grid[new_row][new_col] == 0:
-                print(
-                    f"in side =====> [new_row][new_col]  {new_row}  {new_col}  {perimeter}"
-                )
                 perimeter += 1
     return perimeter
